@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日本神社抽籤 - 御神籤</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🌸 日本神社抽籤 🌸</h1>
+      <p class="subtitle">Exploring Fortune from Famous Japanese Shrines</p>
+    </header>
+
+    <main>
+      <div class="instruction">
+        <p>點擊按鈕，抽取來自日本著名神社的御神籤（籤詩）</p>
+      </div>
+
+      <button id="drawButton" onclick="drawFortune()">
+        抽取御神籤
+      </button>
+
+      <div id="result" class="result hidden">
+        <div class="shrine-name"></div>
+        <div class="fortune-type"></div>
+        <div class="fortune-text"></div>
+        <button id="newDraw" onclick="drawFortune()">再抽一次</button>
+      </div>
+
+      <div class="credits">
+        <p>資料來源：日本各神社傳統御神籤翻譯</p>
+      </div>
+    </main>
+  </div>
+
+  <script src="scripts.js"></script>
+</body>
+</html>

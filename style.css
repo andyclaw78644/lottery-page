@@ -1,0 +1,157 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+header {
+  background: linear-gradient(to right, #ff9a9e, #fad0c4);
+  color: white;
+  text-align: center;
+  padding: 30px 20px;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+main {
+  padding: 30px;
+}
+
+.instruction {
+  background: #fff3cd;
+  border-left: 4px solid #ffc107;
+  padding: 15px;
+  margin-bottom: 25px;
+  border-radius: 0 8px 8px 0;
+}
+
+button {
+  background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.1rem;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 154, 158, 0.4);
+  display: block;
+  margin: 0 auto 20px;
+  width: 200px;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 154, 158, 0.6);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+.result {
+  background: #fff;
+  border-radius: 12px;
+  padding: 25px;
+  margin-top: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  display: none;
+}
+
+.result.show {
+  display: block;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.shrine-name {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #d35400;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.fortune-type {
+  font-size: 1.3rem;
+  color: #e67e22;
+  margin-bottom: 20px;
+  padding: 8px 15px;
+  background: #fdebca;
+  display: inline-block;
+  border-radius: 20px;
+}
+
+.fortune-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #2c3e50;
+  background: #fdfefe;
+  padding: 20px;
+  border-radius: 10px;
+  border-left: 4px solid #3498db;
+  min-height: 80px;
+}
+
+.credits {
+  text-align: center;
+  margin-top: 30px;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+  .container {
+    margin: 10px;
+    border-radius: 10px;
+  }
+  main {
+    padding: 20px;
+  }
+  button {
+    width: 100%;
+    padding: 12px;
+  }
+}

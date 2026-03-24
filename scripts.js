@@ -1,0 +1,44 @@
+const shrines = [
+  {
+    "name": "京都伏見稲荷大社",
+    "prayer": "御神籤：大吉\nあなたの近い未来には、驚くべき出会いが訪れます。これまでの努力が実を結ぶ時です。"
+  },
+  {
+    "name": "東京塔",
+    "prayer": "御神籤：中吉\nチャンスをつかむ準備が整っています。自信を持って一歩を踏み出してください。"
+  },
+  {
+    "name": "大阪城",
+    "prayer": "御神籤：小吉\nゆっくりと進むことが最善です。急がずに自分のペースを守ってください。"
+  },
+  {
+    "name": "浅草寺",
+    "prayer": "御神籤：中吉\n恋愛運気が高まっています。素直な気持ちで新しい関係を築いてみてください。"
+  },
+  {
+    "name": "明治神宮",
+    "prayer": "御神籤：大吉\n大きなチャンスが訪れます。直感を信じて進むと、良い結果を得られます。"
+  }
+];
+
+function drawFortune() {
+  console.log('drawFortune called, shrines length:', shrines.length);
+  const random = Math.floor(Math.random() * shrines.length);
+  const result = shrines[random];
+  console.log('Selected result:', result);
+  const resultEl = document.getElementById("result");
+  resultEl.classList.remove("hidden");
+  resultEl.classList.add("show"); // 添加 show 类来显示
+  document.querySelector(".shrine-name").innerText = result.name;
+  document.querySelector(".fortune-type").innerText = result.prayer.split("\n")[0];
+  document.querySelector(".fortune-text").innerText = result.prayer.split("\n")[1];
+  document.getElementById("newDraw").innerText = "再抽一次";
+  console.log('Fortune rendered:', {
+    name: result.name,
+    type: result.prayer.split("\n")[0],
+    text: result.prayer.split("\n")[1]
+  });
+}
+
+// Initialize the page
+document.getElementById("drawButton").addEventListener("click", drawFortune);
