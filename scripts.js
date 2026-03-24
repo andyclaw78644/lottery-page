@@ -89,21 +89,33 @@ const shrineBadgeEl = document.getElementById("shrineBadge");
 const themeToggle = document.getElementById("themeToggle");
 
 function initTheme() {
-  const saved = localStorage.getItem("lottery-theme");
   const preferredDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  let saved = null;
+  try {
+    saved = localStorage.getItem("lottery-theme");
+  } catch (_) {
+    saved = null;
+  }
   const theme = saved || (preferredDark ? "dark" : "light");
   document.body.dataset.theme = theme;
-  themeToggle.textContent = theme === "dark" ? "☀️ 日間" : "🌙 夜間";
+  if (themeToggle) {
+    themeToggle.textContent = theme === "dark" ? "☀️ 日間" : "🌙 夜間";
+  }
 }
 
 function toggleTheme() {
   const next = document.body.dataset.theme === "dark" ? "light" : "dark";
   document.body.dataset.theme = next;
-  localStorage.setItem("lottery-theme", next);
-  themeToggle.textContent = next === "dark" ? "☀️ 日間" : "🌙 夜間";
+  try {
+    localStorage.setItem("lottery-theme", next);
+  } catch (_) {}
+  if (themeToggle) {
+    themeToggle.textContent = next === "dark" ? "☀️ 日間" : "🌙 夜間";
+  }
 }
 
 function initShrineSelector() {
+  if (!shrineSelect) return;
   shrines.forEach((shrine) => {
     const option = document.createElement("option");
     option.value = shrine.name;
@@ -113,6 +125,7 @@ function initShrineSelector() {
 }
 
 function drawFortune() {
+  if (!shrineSelect || !resultEl || !drawButton) return;
   const selectedShrineName = shrineSelect.value;
   if (!selectedShrineName) {
     alert("請先選擇神社，再抽籤。");
@@ -133,7 +146,7 @@ function drawFortune() {
   void resultEl.offsetWidth; // reflow for animation restart
   resultEl.classList.add("show");
 
-  shrineBadgeEl.textContent = shrine.icon || "⛩️";
+  if (shrineBadgeEl) shrineBadgeEl.textContent = shrine.icon || "⛩️";
   document.querySelector(".shrine-name").innerText = `${shrine.name}`;
   document.querySelector(".fortune-type").innerText = `御神籤：${fortune.type}`;
   document.querySelector(".fortune-text").innerText = `日文原文：${fortune.jp}`;
@@ -146,6 +159,6 @@ function drawFortune() {
 initTheme();
 initShrineSelector();
 
-themeToggle.addEventListener("click", toggleTheme);
-drawButton.addEventListener("click", drawFortune);
-newDrawButton.addEventListener("click", drawFortune);
+if (themeToggle) themeToggle.addEventListener("click", toggleTheme);
+if (drawButton) drawButton.addEventListener("click", drawFortune);
+if (newDrawButton) newDrawButton.addEventListener("click", drawFortune);

@@ -101,10 +101,19 @@ main {
 
 #shrineSelect {
   width: 100%;
-  padding: 12px 14px;
+  padding: 12px 42px 12px 14px;
   border: 1px solid #e3dce8;
   border-radius: 12px;
-  background: #fff;
+  background-color: #fff;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #b86b8a 50%),
+    linear-gradient(135deg, #b86b8a 50%, transparent 50%);
+  background-position:
+    calc(100% - 22px) calc(50% - 2px),
+    calc(100% - 16px) calc(50% - 2px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+  appearance: none;
   font-size: 1rem;
   transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
@@ -275,9 +284,12 @@ body[data-theme="dark"] .instruction {
 }
 
 body[data-theme="dark"] #shrineSelect {
-  background: #222230;
+  background-color: #222230;
   border-color: #47465f;
   color: #ecebf3;
+  background-image:
+    linear-gradient(45deg, transparent 50%, #e59db7 50%),
+    linear-gradient(135deg, #e59db7 50%, transparent 50%);
 }
 
 body[data-theme="dark"] .result {
