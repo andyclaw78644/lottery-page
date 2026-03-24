@@ -11,6 +11,7 @@
     <header>
       <h1>🌸 日本神社抽籤 🌸</h1>
       <p class="subtitle">Exploring Fortune from Famous Japanese Shrines</p>
+      <button id="themeToggle" class="theme-toggle" type="button" aria-label="切換深色模式">🌙 夜間</button>
     </header>
 
     <main>
@@ -28,10 +29,13 @@
       <button id="drawButton">抽取御神籤</button>
 
       <div id="result" class="result hidden">
+        <div class="shrine-badge" id="shrineBadge" aria-hidden="true">⛩️</div>
         <div class="shrine-name"></div>
         <div class="fortune-type"></div>
-        <div class="fortune-text"></div>
-        <div class="fortune-translation"></div>
+        <div class="fortune-slip">
+          <div class="fortune-text"></div>
+          <div class="fortune-translation"></div>
+        </div>
         <button id="newDraw">再抽一次</button>
       </div>
 

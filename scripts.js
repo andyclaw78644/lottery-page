@@ -1,6 +1,7 @@
 const shrines = [
   {
     name: "京都伏見稻荷大社",
+    icon: "🦊",
     fortunes: [
       {
         type: "大吉",
@@ -16,6 +17,7 @@ const shrines = [
   },
   {
     name: "東京淺草寺",
+    icon: "🏮",
     fortunes: [
       {
         type: "中吉",
@@ -31,6 +33,7 @@ const shrines = [
   },
   {
     name: "明治神宮",
+    icon: "🌿",
     fortunes: [
       {
         type: "大吉",
@@ -46,6 +49,7 @@ const shrines = [
   },
   {
     name: "大阪住吉大社",
+    icon: "🌊",
     fortunes: [
       {
         type: "小吉",
@@ -61,6 +65,7 @@ const shrines = [
   },
   {
     name: "神田明神",
+    icon: "💼",
     fortunes: [
       {
         type: "中吉",
@@ -80,12 +85,29 @@ const shrineSelect = document.getElementById("shrineSelect");
 const drawButton = document.getElementById("drawButton");
 const newDrawButton = document.getElementById("newDraw");
 const resultEl = document.getElementById("result");
+const shrineBadgeEl = document.getElementById("shrineBadge");
+const themeToggle = document.getElementById("themeToggle");
+
+function initTheme() {
+  const saved = localStorage.getItem("lottery-theme");
+  const preferredDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+  const theme = saved || (preferredDark ? "dark" : "light");
+  document.body.dataset.theme = theme;
+  themeToggle.textContent = theme === "dark" ? "☀️ 日間" : "🌙 夜間";
+}
+
+function toggleTheme() {
+  const next = document.body.dataset.theme === "dark" ? "light" : "dark";
+  document.body.dataset.theme = next;
+  localStorage.setItem("lottery-theme", next);
+  themeToggle.textContent = next === "dark" ? "☀️ 日間" : "🌙 夜間";
+}
 
 function initShrineSelector() {
   shrines.forEach((shrine) => {
     const option = document.createElement("option");
     option.value = shrine.name;
-    option.textContent = shrine.name;
+    option.textContent = `${shrine.icon} ${shrine.name}`;
     shrineSelect.appendChild(option);
   });
 }
@@ -107,9 +129,12 @@ function drawFortune() {
   const fortune = shrine.fortunes[random];
 
   resultEl.classList.remove("hidden");
+  resultEl.classList.remove("show");
+  void resultEl.offsetWidth; // reflow for animation restart
   resultEl.classList.add("show");
 
-  document.querySelector(".shrine-name").innerText = `⛩️ ${shrine.name}`;
+  shrineBadgeEl.textContent = shrine.icon || "⛩️";
+  document.querySelector(".shrine-name").innerText = `${shrine.name}`;
   document.querySelector(".fortune-type").innerText = `御神籤：${fortune.type}`;
   document.querySelector(".fortune-text").innerText = `日文原文：${fortune.jp}`;
   document.querySelector(".fortune-translation").innerText = `中文翻譯：${fortune.zh}`;
@@ -118,6 +143,9 @@ function drawFortune() {
   drawButton.classList.add("hidden");
 }
 
+initTheme();
 initShrineSelector();
+
+themeToggle.addEventListener("click", toggleTheme);
 drawButton.addEventListener("click", drawFortune);
 newDrawButton.addEventListener("click", drawFortune);
