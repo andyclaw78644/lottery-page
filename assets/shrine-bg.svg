@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fde8e8"/>
+      <stop offset="100%" stop-color="#f6f0ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1200" fill="url(#sky)"/>
+
+  <!-- soft mountains -->
+  <path d="M0 860 Q220 690 420 860 T840 860 T1260 860 T1600 860 L1600 1200 L0 1200 Z" fill="#dfe8f7" opacity="0.65"/>
+  <path d="M0 920 Q260 760 520 920 T1040 920 T1600 920 L1600 1200 L0 1200 Z" fill="#cfdcf3" opacity="0.45"/>
+
+  <!-- torii silhouettes -->
+  <g fill="#d24d57" opacity="0.16">
+    <rect x="180" y="520" width="24" height="220" rx="4"/>
+    <rect x="300" y="520" width="24" height="220" rx="4"/>
+    <rect x="150" y="500" width="210" height="16" rx="4"/>
+    <rect x="130" y="485" width="250" height="12" rx="4"/>
+
+    <rect x="760" y="460" width="28" height="250" rx="4"/>
+    <rect x="900" y="460" width="28" height="250" rx="4"/>
+    <rect x="720" y="435" width="250" height="18" rx="4"/>
+    <rect x="695" y="418" width="300" height="13" rx="4"/>
+
+    <rect x="1240" y="560" width="22" height="190" rx="4"/>
+    <rect x="1340" y="560" width="22" height="190" rx="4"/>
+    <rect x="1215" y="543" width="170" height="14" rx="4"/>
+    <rect x="1198" y="530" width="206" height="10" rx="4"/>
+  </g>
+
+  <!-- sakura dots -->
+  <g fill="#f7b9c8" opacity="0.38">
+    <circle cx="120" cy="120" r="5"/><circle cx="190" cy="180" r="4"/><circle cx="240" cy="90" r="6"/>
+    <circle cx="480" cy="160" r="5"/><circle cx="540" cy="105" r="4"/><circle cx="620" cy="170" r="6"/>
+    <circle cx="860" cy="120" r="5"/><circle cx="940" cy="190" r="4"/><circle cx="1020" cy="130" r="6"/>
+    <circle cx="1250" cy="160" r="5"/><circle cx="1320" cy="110" r="4"/><circle cx="1450" cy="170" r="6"/>
+  </g>
+</svg>

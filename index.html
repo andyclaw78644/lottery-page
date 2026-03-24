@@ -15,22 +15,28 @@
 
     <main>
       <div class="instruction">
-        <p>點擊按鈕，抽取來自日本著名神社的御神籤（籤詩）</p>
+        <p>先選神社，再抽取御神籤。抽完後可按「再抽一次」。</p>
       </div>
 
-      <button id="drawButton" onclick="drawFortune()">
-        抽取御神籤
-      </button>
+      <div class="selector-wrap">
+        <label for="shrineSelect">選擇神社：</label>
+        <select id="shrineSelect">
+          <option value="">請選擇神社</option>
+        </select>
+      </div>
+
+      <button id="drawButton">抽取御神籤</button>
 
       <div id="result" class="result hidden">
         <div class="shrine-name"></div>
         <div class="fortune-type"></div>
         <div class="fortune-text"></div>
-        <button id="newDraw" onclick="drawFortune()">再抽一次</button>
+        <div class="fortune-translation"></div>
+        <button id="newDraw">再抽一次</button>
       </div>
 
       <div class="credits">
-        <p>資料來源：日本各神社傳統御神籤翻譯</p>
+        <p>資料來源：日本神社文化語境改寫（含中文翻譯）</p>
       </div>
     </main>
   </div>
